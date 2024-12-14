@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Ensure the script is run as root
 if [ "$(id -u)" -ne 0 ]; then
@@ -9,19 +9,15 @@ fi
 # Get all users with UID >= 1000 and < 65534, excluding 'nobody'
 users=($(awk -F: '$3 >= 1000 && $3 < 65534 && $1 != "nobody" {print $1}' /etc/passwd))
 
-# Install necessary packages
-apt update
-apt install -y terminator zsh wget git
+# Install necessary packages if not already installed
+for pkg in terminator zsh wget git; do
+  if ! command -v $pkg &> /dev/null; then
+    apt install -y $pkg
+  fi
+done
 
-# Ensure Zsh is installed and set as the default shell for root
+# Set Zsh as the default shell for root
 zsh_path=$(which zsh)
-if [ -z "$zsh_path" ]; then
-  echo "Zsh is not installed. Installing..."
-  apt install -y zsh
-  zsh_path=$(which zsh)
-fi
-
-# Set Zsh as the default shell for root if not already
 if [ "$SHELL" != "$zsh_path" ]; then
   chsh -s "$zsh_path" root
 fi
@@ -71,19 +67,5 @@ for user in "${users[@]}"; do
   chown -R "$user:$user" "$user_home/.config/terminator"
 done
 
-source /root/.zshrc
-
-for user in "${users[@]}"; do
-  source $user_home/.zshrc
-
 # Final message
-echo "Setup complete. Please close and reopen your terminal to apply changes, or leave it open. Whatever you want."
-echo "
-[keybindings]
-  new_tab = <Primary>t
-  split_horiz = <Alt>h
-  split_vert = <Alt>v
-  close_term = <Alt>c
-  copy = <Primary>c
-  paste = <Primary>v
-  search = <Primary>f
+echo "Setup complete. Please close and reopen your terminal to apply changes."
