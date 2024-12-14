@@ -9,16 +9,16 @@ If your anything like me and have trouble working on a computer that does not fi
 Probably have ZSH aready install if not try it out anyway. I only tested it on a system that already had it, but the logic should be there to run it without I think.
 You might get a bash trying to run a zsh script error.
 
-'sudo su'
+`sudo su`
 
 install zsh
 
-'sudo apt install zsh'
+`sudo apt install zsh`
 
-'git clone https://github.com/AlbertL7/Init-Terminal-Setup.git'
+`git clone https://github.com/AlbertL7/Init-Terminal-Setup.git`
 
-'cd Init-Termainal-Setup.git'
+`cd Init-Termainal-Setup.git`
 
-'chmod +x SetTerminal.sh'
+`chmod +x SetTerminal.sh`
 
-'./SetTerminal.sh'
+`./SetTerminal.sh`
