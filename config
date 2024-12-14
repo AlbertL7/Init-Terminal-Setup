@@ -1,0 +1,29 @@
+[global_config]
+[keybindings]
+  new_tab = <Primary>t
+  split_horiz = <Alt>h
+  split_vert = <Alt>v
+  close_term = <Alt>c
+  copy = <Primary>c
+  paste = <Primary>v
+  search = <Primary>f
+  close_window = <Shift><Alt>w
+[profiles]
+  [[default]]
+    background_color = "#1b1b1b"
+    foreground_color = "#ffffff"
+    palette = "#3d3d3d:#6673bf:#3ea290:#b0ead9:#31658c:#596196:#8292b2:#c8cacc:#4d4d4d:#899aff:#52ad91:#98c9bb:#477ab3:#7882bf:#95a7cc:#edeff2"
+    title_transmit_fg_color = "#000000"
+    title_transmit_bg_color = "#26a269"
+    title_use_system_font = False
+    title_font = Nimbus Mono PS Bold 11
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
