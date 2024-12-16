@@ -22,3 +22,6 @@ install zsh
 `chmod +x SetTerminal.sh`
 
 `./SetTerminal.sh`
+
+
+If you want to use my custom theme just copy it over to the "/$user_home/.ohmyzsh/theme" directory and add it to the 'ZSH_THEME="namaban"' in the ".zshrc" user file.
